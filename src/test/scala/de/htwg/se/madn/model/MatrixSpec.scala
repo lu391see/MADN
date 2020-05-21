@@ -13,7 +13,6 @@ class MatrixSpec extends WordSpec with Matchers {
         val testMatrix = Matrix(Vector(Vector(Cell(0))))
         testMatrix.size should be(1)
       }
-
     }
     "filled" should {
       val matrix = new Matrix[Cell](2, Cell(5))
@@ -28,6 +27,9 @@ class MatrixSpec extends WordSpec with Matchers {
       "be filled using fill operation" in {
         val returnedMatrix = matrix.fill(Cell(3))
         returnedMatrix.cell(0,0) should be(Cell(3))
+      }
+      "String contain only 5s" in {
+        matrix.toString contains " 5 \n"
       }
     }
   }
