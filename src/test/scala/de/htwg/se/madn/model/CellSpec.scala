@@ -10,6 +10,9 @@ class CellSpec extends WordSpec with Matchers{
     "not be set" in {
       emptyCell.isSet should be(false)
     }
+    "show unplayable mark" in {
+      emptyCell.toString.matches("/s{3}")
+    }
   }
   "set to a specific value" should {
     val nonEmptyCell = Cell(5)
@@ -18,6 +21,9 @@ class CellSpec extends WordSpec with Matchers{
     }
     "be set" in {
       nonEmptyCell.isSet should be(true)
+    }
+    "show number in String" in {
+      nonEmptyCell.toString.matches("/s5/s")
     }
   }
   }
