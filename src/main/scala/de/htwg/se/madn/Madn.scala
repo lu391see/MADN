@@ -11,7 +11,7 @@ object Madn {
     s = "|" + string1 + "\n|" + string2 + "\n|" +
       s"""The game will start with 2 player(s).
          |Be careful $player2, you will face $player1!\n"""
-    val game = new Matrix[Cell](11, Cell(0))
+    val game = new Field[Cell](11, Cell(0))
     s += game.toString
     println(s.stripMargin)
   }
