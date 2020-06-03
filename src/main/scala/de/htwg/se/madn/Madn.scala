@@ -3,9 +3,9 @@ import model._
 
 object Madn {
   def main(args: Array[String]): Unit = {
-
+    val playerarraysize = scala.io.StdIn.readLine("Wieviele Spieler spielen?")
     var player_counter: Int = 1
-    val players:Array[Player] = new Array[Player](2)
+    val players:Array[Player] = new Array[Player](playerarraysize.toInt)
     players(player_counter - 1) = new Player(scala.io.StdIn.readLine("Type your Name: "), player_counter -1, (player_counter - 1) * 10)
     val string1 = "Hello, " + players(0).name + ", Welcome to 'Mensch Aergere Dich Nicht'!"
 
@@ -32,7 +32,7 @@ object Madn {
 
 
     while(input != "q") {
-      println(players(turn_counter))
+      println(players(turn_counter).name)
       val Dice = new Dice()
       input = scala.io.StdIn.readLine("Choose which pin should move %d tiles\n" , Dice.t1)
 
@@ -70,17 +70,13 @@ object Madn {
                     input = "q"
       }
       if(players(turn_counter).hasWon) {
-        println(players(turn_counter) + "has won")
+        println(players(turn_counter).name + " has won")
         input = "q"//spiel beenden
       }
       turn_counter += 1
       if(turn_counter == player_counter) {
         turn_counter = turn_counter - player_counter
       }
-
-
-
-
     }
   }
 }
