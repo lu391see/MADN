@@ -1,4 +1,5 @@
 package de.htwg.se.madn.model
+import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.{Matchers, WordSpec}
 
 class CellSpec extends WordSpec with Matchers{
