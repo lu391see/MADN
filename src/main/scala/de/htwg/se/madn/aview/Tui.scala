@@ -47,8 +47,9 @@ class Tui {
         player.hasWon = true
         game.replaceCell(player.pin4.position, Cell(0))
       }
-      case _   => println("error, exiting game!")
-        game
+      case _   =>
+        val new_input = scala.io.StdIn.readLine("No valid Pin, try again!\n")
+        processInputLine(new_input, game, player, dice)
     }
   }
 }
