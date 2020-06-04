@@ -17,6 +17,7 @@ class PlayerSpec extends WordSpec with Matchers {
       "have 4 pins with number in front of index" in {
         player.team should be(1)
         player.pin1.index should be(11)
+        player.pin1.position should be(0)
         //player.pin1 should be (Pin(11))
         player.pin2.index should be(12)
         player.pin4.index should be(14)
