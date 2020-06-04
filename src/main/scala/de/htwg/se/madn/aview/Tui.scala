@@ -10,7 +10,6 @@ class Tui {
       case "1" => if(player.pin1.position + dice.t1 < player.defaultPosition + 40) {
         game = game.replaceCell(player.pin1.position, Cell(0))
         player.pin1.addPosition(dice.t1)
-        println(player.pin1.position)
         game.replaceCell(player.pin1.position, Cell(player.pin1.index))
       }
       else {
@@ -20,7 +19,6 @@ class Tui {
       case "2" => if(player.pin2.position + dice.t1 < player.defaultPosition + 40) {
         game = game.replaceCell(player.pin2.position, Cell(0))
         player.pin2.addPosition(dice.t1)
-        println(player.pin2.position)
         game.replaceCell(player.pin2.position, Cell(player.pin2.index))
       }
       else {
@@ -30,7 +28,6 @@ class Tui {
       case "3" =>if(player.pin3.position + dice.t1 < player.defaultPosition + 40) {
         game = game.replaceCell(player.pin3.position, Cell(0))
         player.pin3.addPosition(dice.t1)
-        println(player.pin3.position)
         game.replaceCell(player.pin3.position, Cell(player.pin3.index))
       }
       else {
@@ -40,7 +37,6 @@ class Tui {
       case "4" =>if(player.pin4.position + dice.t1 < player.defaultPosition + 40) {
         game = game.replaceCell(player.pin4.position, Cell(0))
         player.pin4.addPosition(dice.t1)
-        println(player.pin4.position)
         game.replaceCell(player.pin4.position, Cell(player.pin4.index))
       }
       else {
