@@ -11,3 +11,6 @@
     // warte auf input mit figurnummer
     // Figur verschieben, ggf. werfen
 // variable zum bestimmen wer dran ist incremeten
+
+//TODO: Issue: spieler 1 startet auf Feld 1 anstatt Feld 0
+//TODO: Issue: hasWon Spielerausgabe tritt erst auf nachdem der Gegner noch seinen Zug eingeben hat
