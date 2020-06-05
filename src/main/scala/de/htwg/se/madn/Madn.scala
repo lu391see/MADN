@@ -1,5 +1,6 @@
 package de.htwg.se.madn
 import de.htwg.se.madn.aview.Tui
+import de.htwg.se.madn.controller.Controller
 import model._
 
 object Madn {
@@ -16,16 +17,16 @@ object Madn {
     }
     string1 += "\nWelcome to Mensch Aergere Dich Nicht!\n"
     player_counter -= 1
-
-    var game = new Field[Cell](40, Cell(0))
-    val tui = new Tui
-    //println(s.stripMargin)
     println(string1)
+
+
+    val controller = new Controller(new Field[Cell](40, Cell(0)))
+    val tui = new Tui(controller)
+    controller.notifyObservers
 
     var turn_counter = 0
 
     var input: String = ""
-
 
     while(input != "q") {
       val dice = Dice()
@@ -33,7 +34,7 @@ object Madn {
         + players(turn_counter).name + " can walk " + dice.t1 + " please choose a pin (1-4)!")
 
       input = scala.io.StdIn.readLine()
-      game = tui.processInputLine(input, game, players(turn_counter), dice)
+      tui.processInputLine(input, game, players(turn_counter), dice)
 
       if(players(turn_counter).hasWon) {
         println(players(turn_counter).name + " has won!!")

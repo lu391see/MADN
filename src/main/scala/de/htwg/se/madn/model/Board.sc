@@ -6,11 +6,3 @@ case class Board(cells: Field[Cell]) {
   val size: Int = cells.size
   def cell(row: Int): Cell = cells.cell(row)
 }
-
-
-
-
-var s = ""
-val game = new Field[Cell](11, Cell(0))
-s += game.toString
-println(s.stripMargin)

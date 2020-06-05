@@ -1,8 +1,12 @@
 package de.htwg.se.madn.aview
 
+import de.htwg.se.madn.controller.Controller
 import de.htwg.se.madn.model.{Cell, Dice, Field, Player}
+import de.htwg.se.madn.util.Observer
 
-class Tui {
+class Tui(controller: Controller) extends Observer {
+  controller.add(this)
+
   def processInputLine(input: String, board: Field[Cell], player: Player, dice: Dice): Field[Cell] = {
     var game : Field[Cell] = board
     input match {
