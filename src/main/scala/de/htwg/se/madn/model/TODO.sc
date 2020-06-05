@@ -12,5 +12,9 @@
     // Figur verschieben, ggf. werfen
 // variable zum bestimmen wer dran ist incremeten
 
-//TODO: Issue: spieler 1 startet auf Feld 1 anstatt Feld 0
-//TODO: Issue: hasWon Spielerausgabe tritt erst auf nachdem der Gegner noch seinen Zug eingeben hat
+//SOLVED Issue: spieler 1 startet auf Feld 1 anstatt Feld 0
+//SOLVED Issue: hasWon Spielerausgabe tritt erst auf nachdem der Gegner noch seinen Zug eingeben hat
+
+
+//TODO: implement board
+//TODO: implement controller
