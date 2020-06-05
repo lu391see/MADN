@@ -1,6 +1,5 @@
 package de.htwg.se.madn
 import de.htwg.se.madn.aview.Tui
-import javax.swing.plaf.TextUI
 import model._
 
 object Madn {
