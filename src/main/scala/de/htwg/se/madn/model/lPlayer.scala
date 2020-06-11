@@ -1,6 +1,6 @@
 package de.htwg.se.madn.model
 
-trait lPlayer{
+trait Player{
   val index : Int
   val position : Int
   val team : Int
