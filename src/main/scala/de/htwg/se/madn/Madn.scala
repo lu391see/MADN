@@ -10,7 +10,7 @@ object Madn {
     val players:Array[Player] = new Array[Player](playerarraysize.toInt)
     var string1: String = "Hello, "
     for (i <- 0 until  playerarraysize.toInt) {
-      players(player_counter - 1) = new Player(scala.io.StdIn.readLine("Type your Name: "), player_counter, (player_counter - 1) * 10)
+      players(player_counter - 1) = new Player(scala.io.StdIn.readLine("Type your Name: "), player_counter)
       string1 += players(player_counter-1).name
       string1 += ", "
       player_counter += 1
@@ -19,7 +19,7 @@ object Madn {
     player_counter -= 1
 
     var game = new Field[Cell](40, Cell(0))
-    val tui = new Tui
+    val tui = new Tui()
     //println(s.stripMargin)
     println(string1)
 
