@@ -6,7 +6,7 @@ case class Board(cells: Field[Cell]) {
   val size: Int = cells.size
   def cell(row: Int): Cell = cells.cell(row)
 }
-
+var x = 10
 
 
 
