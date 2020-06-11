@@ -5,3 +5,5 @@ This is a basic scala project as used in the class Software Engineering at the U
 We try to implement a scala version of the game Mensch Aergere Dich Nicht (https://en.wikipedia.org/wiki/Mensch_%C3%A4rgere_Dich_nicht)
 
 [![Build Status](https://travis-ci.com/lu391see/MADN.svg?branch=master)](https://travis-ci.com/lu391see/MADN)
+
+[![Coverage Status](https://coveralls.io/repos/github/lu391see/MADN/badge.svg?branch=master)](https://coveralls.io/github/lu391see/MADN?branch=master)
