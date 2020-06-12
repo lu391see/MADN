@@ -1,5 +1,6 @@
 package de.htwg.se.madn
 import de.htwg.se.madn.aview.Tui
+import de.htwg.se.madn.controller.Controller
 import javax.swing.plaf.TextUI
 import model._
 
@@ -10,7 +11,7 @@ object Madn {
     val players:Array[Player] = new Array[Player](playerarraysize.toInt)
     var string1: String = "Hello, "
     for (i <- 0 until  playerarraysize.toInt) {
-      players(player_counter - 1) = new Player(scala.io.StdIn.readLine("Type your Name: "), player_counter, (player_counter - 1) * 10)
+      players(player_counter - 1) = new Player(scala.io.StdIn.readLine("Type your Name: "), player_counter)
       string1 += players(player_counter-1).name
       string1 += ", "
       player_counter += 1
@@ -18,8 +19,10 @@ object Madn {
     string1 += "Welcome to Mensch aergere dich nicht!"
     player_counter -= 1
 
-    var game = new Field[Cell](40, Cell(0))
-    val tui = new Tui
+    val controller = new Controller(new Field[Cell](40, Cell(0)))
+    val tui = new Tui(controller)
+    controller.notifyObservers
+
     //println(s.stripMargin)
     println(string1)
 
@@ -33,17 +36,18 @@ object Madn {
       val dice = Dice()
       println(players(turn_counter).name + " can walk " + dice.t1 + " please choose a pin to walk with (1-4)!")
       input = scala.io.StdIn.readLine()
-      game = tui.processInputLine(input, game, players(turn_counter), dice)
-
+      tui.processInputLine(input, players(turn_counter), dice)
+      /*
       if(players(turn_counter).hasWon) {
         println(players(turn_counter).name + " has won")
         input = "q"//spiel beenden
       }
+     */
       turn_counter += 1
       if(turn_counter == player_counter) {
         turn_counter = turn_counter - player_counter
       }
-      println("Current Game Status:" + game.toString)
+      //println("Current Game Status:" + game.toString)
     }
   }
 }

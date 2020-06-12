@@ -6,12 +6,12 @@ case class Player(name: String, team: Int) {
   val defaultPosition : Int = (team-1) * 10
 
   var hasWon :Boolean = false
-  val pins:Array[Pin] = new Array[Pin](4)
-  for(i <- 0 until 5) {
+
+  /*for(i <- 0 until 4) {
     pins(i) = new Pin(team * 10 + 1)
     pins(i).addPosition(defaultPosition)
-  }
-  /*
+  }*/
+
   val pin1 = Pin(team * 10 + 1)
   pin1.addPosition(defaultPosition)
 
@@ -23,7 +23,8 @@ case class Player(name: String, team: Int) {
 
   val pin4 = Pin(team * 10 + 4)
   pin4.addPosition(defaultPosition)
-  */
+  val pins = List(pin1, pin2, pin3, pin4)
+
   override def toString: String = {
     "Player " + team + ": " + name
   }
