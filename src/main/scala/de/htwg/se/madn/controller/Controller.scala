@@ -12,10 +12,10 @@ class Controller(var board: Field[Cell]) extends Observable{
       board = board.replaceCell(player.pins(input.toInt-1).position, Cell(player.pins(input.toInt - 1).index))
       //println(player.pins(input.toInt - 1).position + dice.t1)
     }
-    else {
+    /*else {
       player.hasWon = true
       board.replaceCell(player.pins(input.toInt - 1).position, Cell(0))
-    }
+    }*/
     board
     notifyObservers
   }
