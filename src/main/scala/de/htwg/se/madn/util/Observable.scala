@@ -1,7 +1,7 @@
 package de.htwg.se.madn.util
 
 trait Observer {
-  def update: Boolean
+  def update: Unit
 }
 
 class Observable {

@@ -5,7 +5,7 @@ import de.htwg.se.madn.model.{Cell, Dice, Field, Player}
 import de.htwg.se.madn.util.Observer
 
 class Tui(controller: Controller) extends Observer {
-  override def update: Boolean = {println(controller.board.toString);true}
+  override def update: Unit = println(controller.board.toString)
   controller.add(this)
 
   def processInputLine(input: String, player: Player, dice: Dice): Unit = {
