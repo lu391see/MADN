@@ -8,11 +8,15 @@ class Controller(var board: Field[Cell]) extends Observable{
     //var board : Field[Cell] = game
     if (player.pins(input.toInt - 1).position + dice.t1 < player.defaultPosition + 40) {
       board = board.replaceCell(player.pins(input.toInt - 1).position, Cell(0))
+      player.pins(input.toInt - 1).addPosition(dice.t1)
+    }
+      //board = board.replaceCell(player.pins(input.toInt-1).position, Cell(player.pins(input.toInt - 1).index))
     if (board.cell(player.pins(input.toInt - 1).position + dice.t1) != Cell(0)) {
       Pin(board.cell(player.pins(input.toInt - 1).position + dice.t1).value).position = 0
       board = board.replaceCell(player.pins(input.toInt - 1).position + dice.t1, Cell(player.pins(input.toInt - 1).index))
+      player.pins(input.toInt - 1).addPosition(dice.t1)
     }
-    else
+    else {
       player.pins(input.toInt - 1).addPosition(dice.t1)
       board = board.replaceCell(player.pins(input.toInt-1).position, Cell(player.pins(input.toInt - 1).index))
     }
