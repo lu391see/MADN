@@ -5,7 +5,7 @@ import model._
 
 object Madn {
   def main(args: Array[String]): Unit = {
-    val playerarraysize = scala.io.StdIn.readLine("Wieviele Spieler spielen?")
+    /*val playerarraysize = scala.io.StdIn.readLine("Wieviele Spieler spielen?")
     var player_counter: Int = 1
     val players:Array[Player] = new Array[Player](playerarraysize.toInt)
     var string1: String = "Hello, "
@@ -17,13 +17,14 @@ object Madn {
     }
     string1 += "Welcome to Mensch aergere dich nicht!"
     player_counter -= 1
-
+    */
+    val players:List[Player] = Board.CreatePlayers()
     val controller = new Controller(new Field[Cell](40, Cell(0)))
     val tui = new Tui(controller)
     controller.notifyObservers
 
     //println(s.stripMargin)
-    println(string1)
+    //println(string1)
 
     var turn_counter = 0
 
@@ -43,8 +44,8 @@ object Madn {
       }
      */
       turn_counter += 1
-      if(turn_counter == player_counter) {
-        turn_counter = turn_counter - player_counter
+      if(turn_counter == players.length) {
+        turn_counter = turn_counter - players.length
       }
       //println("Current Game Status:" + game.toString)
     }

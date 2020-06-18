@@ -20,4 +20,3 @@ class Controller(var board: Field[Cell]) extends Observable{
     notifyObservers
   }
 }
-
