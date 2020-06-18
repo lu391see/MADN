@@ -5,7 +5,7 @@ import model._
 
 object Madn {
   def main(args: Array[String]): Unit = {
-    /*val playerarraysize = scala.io.StdIn.readLine("Wieviele Spieler spielen?")
+    val playerarraysize = scala.io.StdIn.readLine("Wieviele Spieler spielen?")
     var player_counter: Int = 1
     val players:Array[Player] = new Array[Player](playerarraysize.toInt)
     var string1: String = "Hello, "
@@ -17,9 +17,12 @@ object Madn {
     }
     string1 += "Welcome to Mensch aergere dich nicht!"
     player_counter -= 1
-    */
-    val players:List[Player] = Board.CreatePlayers()
+
     val controller = new Controller(new Field[Cell](40, Cell(0)))
+    /*Board board = new Board(new List(Field[Cell](40, Cell(0))))
+    val players:List[Player] = board.CreatePlayers()
+    board.CreateHouses(players.length, board)
+    */
     val tui = new Tui(controller)
     controller.notifyObservers
 

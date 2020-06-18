@@ -4,13 +4,9 @@ package de.htwg.se.madn.model
 case class Player(name: String, team: Int) {
   //def this(name: String) = this(name, team, defaultPosition, false)
   val defaultPosition : Int = (team-1) * 10
-
+  var house = new Field[Cell](4, Cell(0))
+  var start = new Field[Cell](4, Cell(0))
   var hasWon :Boolean = false
-
-  /*for(i <- 0 until 4) {
-    pins(i) = new Pin(team * 10 + 1)
-    pins(i).addPosition(defaultPosition)
-  }*/
 
   val pin1 = Pin(team * 10 + 1)
   pin1.addPosition(defaultPosition)

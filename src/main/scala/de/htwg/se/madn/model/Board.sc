@@ -1,16 +1,16 @@
-import de.htwg.se.madn.model.{Cell, Field}
+package de.htwg.se.madn.model
+import scala.collection.mutable.ListBuffer
 
-
-case class Board(cells: Field[Cell]) {
-  def this(size: Int) = this(new Field[Cell](size, Cell(0)))
-  val size: Int = cells.size
-  def cell(row: Int): Cell = cells.cell(row)
+case class Board(Field:Field[Cell]){
+  def createplayers():List[Player] = {
+    val playerlistsize = scala.io.StdIn.readLine("Wieviele Spieler spielen?")
+    var player_counter: Int = 1
+    var buf = new ListBuffer[Player]()
+    for (i <- 0 until playerlistsize.toInt) {
+      buf += new Player(scala.io.StdIn.readLine("Type your Name: "), player_counter)
+      player_counter += 1
+    }
+    val players = buf.toList
+  }
+  createplayers()
 }
-
-
-
-
-var s = ""
-val game = new Field[Cell](11, Cell(0))
-s += game.toString
-println(s.stripMargin)
