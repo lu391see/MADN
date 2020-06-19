@@ -9,5 +9,8 @@ case class Pin (index: Int){
       position -= 40
     }
   }
+  def setPosition(set:Int): Unit ={
+    position = set
+  }
 
 }

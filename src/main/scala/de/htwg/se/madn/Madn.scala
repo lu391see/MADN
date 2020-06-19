@@ -23,7 +23,7 @@ object Madn {
     val players:List[Player] = board.CreatePlayers()
     board.CreateHouses(players.length, board)
     */
-    val tui = new Tui(controller)
+    val tui = new Tui(controller, players)
     controller.notifyObservers
 
     //println(s.stripMargin)
