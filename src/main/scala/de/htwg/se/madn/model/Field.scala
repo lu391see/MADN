@@ -13,7 +13,13 @@ case class Field[T](spots: List[T]) {
 
   override def toString: String = {
     var s = ""
-    for {spot <- 0 until size} yield {s += cell(spot).toString}
+    for {spot <- 0 until size}
+      yield {
+        if(spot % 10 == 0) {
+          s+= "||"
+        }
+        s += cell(spot).toString
+      }
     s
   }
 
