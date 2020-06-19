@@ -7,9 +7,9 @@ class Controller(var board: Field[Cell]) extends Observable{
   def move(player: Player, input: String, dice: Dice, playerlist: List[Player]): Unit = {
     if(player.pins(input.toInt - 1).position + dice.t1 > player.defaultPosition + 40) {
       if (board.cell(player.pins(input.toInt - 1).position + dice.t1 - 40) != Cell(0)) {
-        //isMyTeam: Drawing pin / pin at position
-        val isMyTeam : Int = Pin(board.cell(player.pins(input.toInt - 1).position + dice.t1).value).index / player.pins(input.toInt - 1).index
-        if(isMyTeam != 0) {
+        val myTeam : Int = player.pins(input.toInt - 1).index / 10
+        val occupantTeam : Int = Pin(board.cell(player.pins(input.toInt - 1).position + dice.t1).value).index / 10
+        if(myTeam != occupantTeam) {
           //set old occupants position to default
           val calcTeam = board.cell(player.pins(input.toInt - 1).position + dice.t1).value / 10
           Pin(board.cell(player.pins(input.toInt - 1).position + dice.t1).value).addPosition(-(player.pins(input.toInt - 1).position + dice.t1))
@@ -31,9 +31,9 @@ class Controller(var board: Field[Cell]) extends Observable{
     }
     else {
       if (board.cell(player.pins(input.toInt - 1).position + dice.t1) != Cell(0)) {
-        //isMyTeam: Drawing pin / pin at position
-        val isMyTeam : Int = Pin(board.cell(player.pins(input.toInt - 1).position + dice.t1).value).index / player.pins(input.toInt - 1).index
-        if (isMyTeam != 0) {
+        val myTeam : Int = player.pins(input.toInt - 1).index / 10
+        val occupantTeam : Int = Pin(board.cell(player.pins(input.toInt - 1).position + dice.t1).value).index / 10
+        if(myTeam != occupantTeam) {
           //set old occupants position to default
           val calcTeam = board.cell(player.pins(input.toInt - 1).position + dice.t1).value / 10
           Pin(board.cell(player.pins(input.toInt - 1).position + dice.t1).value).addPosition(-(player.pins(input.toInt - 1).position + dice.t1))
