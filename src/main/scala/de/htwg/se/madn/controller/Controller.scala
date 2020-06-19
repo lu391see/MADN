@@ -6,50 +6,38 @@ import de.htwg.se.madn.util.Observable
 
 class Controller(var board: Field[Cell]) extends Observable{
   def move(player: Player, input: String, dice: Dice, playerlist: Array[Player]): Unit = {
+
     val pin = player.pins(input.toInt -1)
     val newPinPos = pin.position + dice.t1
-    if(newPinPos > 40) {
+
+    if(newPinPos >= 40) {
       if (board.cell(newPinPos - 40).isSet) {
+
         val myTeam : Int = pin.index / 10
-        val occupantTeam : Int = Pin(board.cell(newPinPos).value).index / 10
+        val occupantTeam : Int = board.cell(newPinPos).value / 10
+        if(myTeam != occupantTeam) {
+          // TODO: implement base
+          playerlist(occupantTeam -1).pins(board.cell(newPinPos - 40).value - occupantTeam * 10).setPosition(playerlist(occupantTeam - 1).defaultPosition)
+        } else
+          return
+      }
+      board = board.replaceCell(pin.position, Cell(0))
+      pin.addPosition(dice.t1)
+      board = board.replaceCell(pin.position, Cell(pin.index))
+    } else {
+      if (board.cell(newPinPos).isSet) {
+        val myTeam : Int = pin.index / 10
+        val occupantTeam : Int = board.cell(newPinPos).value / 10
         if(myTeam != occupantTeam) {
           //set old occupants position to default
-          val calcTeam = board.cell(newPinPos).value / 10
-          Pin(board.cell(newPinPos).value).setPosition(playerlist(calcTeam).defaultPosition)
-
-          //Pin(board.cell(player.pins(input.toInt - 1).position + dice.t1).value).position = 0
-          board = board.replaceCell(pin.position, Cell(0))
-          board = board.replaceCell(newPinPos - 40, Cell(pin.index))
-          board = board.replaceCell(pin.position, Cell(0))
-          pin.addPosition(dice.t1)
-        }
+          playerlist(occupantTeam -1).pins(board.cell(newPinPos).value - occupantTeam * 10).setPosition(playerlist(occupantTeam - 1).defaultPosition)
+          //Pin(board.cell(newPinPos).value).setPosition(playerlist(occupantTeam - 1).defaultPosition)
+        } else
+          return
       }
-      else {
-        board = board.replaceCell(newPinPos - 40, Cell(pin.index))
-        board = board.replaceCell(pin.position, Cell(0))
-        pin.addPosition(dice.t1)
-        //player.pins(input.toInt - 1).addPosition(-40)
-      }
-    }
-    else {
-      if (board.cell(newPinPos) != Cell(0)) {
-        val myTeam : Int = pin.index / 10
-        val occupantTeam : Int = Pin(board.cell(newPinPos).value).index / 10
-        if(myTeam != occupantTeam) {
-          //set old occupants position to default
-          val calcTeam = board.cell(newPinPos).value / 10
-          Pin(board.cell(newPinPos).value).setPosition(playerlist(calcTeam).defaultPosition)
-
-          board = board.replaceCell(pin.position, Cell(0))
-          board = board.replaceCell(newPinPos, Cell(pin.index))
-          pin.addPosition(dice.t1)
-          }
-        }
-      else {
-        board = board.replaceCell(pin.position, Cell(0))
-        board = board.replaceCell(newPinPos, Cell(pin.index))
-        pin.addPosition(dice.t1)
-      }
+      board = board.replaceCell(pin.position, Cell(0))
+      pin.addPosition(dice.t1)
+      board = board.replaceCell(pin.position, Cell(pin.index))
     }
     board
     notifyObservers
