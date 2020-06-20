@@ -19,7 +19,7 @@ class UndoManager {
     }
   }
 
-  def redoStep(): Unit= {
+  def redoStep(): Unit = {
     redoStack match {
       case Nil =>
       case head::stack =>
