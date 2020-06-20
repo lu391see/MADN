@@ -10,6 +10,8 @@ class Tui(controller: Controller, players : Array[Player]) extends Observer {
   def processInputLine(input: String, player: Player, dice: Dice): Unit = {
     input match {
       case "q" =>
+      case "z" => controller.undo()
+      case "y" => controller.redo()
       case "1"|"2"|"3"|"4" => controller.move(player, input, dice, players)
       case _   =>
         /* s = input + " is no valid entry"

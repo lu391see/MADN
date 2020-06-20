@@ -1,10 +1,13 @@
 package de.htwg.se.madn.controller
 
 import de.htwg.se.madn.model.{Cell, Dice, Field, Pin, Player}
-import de.htwg.se.madn.util.Observable
+import de.htwg.se.madn.util.{Observable, UndoManager}
 // TODO: BUGFIXING (WERFEN)
 
-class Controller(var board: Field[Cell]) extends Observable{
+class Controller(var board: Field[Cell]) extends Observable {
+
+  private val undoManager = new UndoManager
+
   def move(player: Player, input: String, dice: Dice, playerlist: Array[Player]): Unit = {
 
     val pin = player.pins(input.toInt -1)
@@ -41,6 +44,16 @@ class Controller(var board: Field[Cell]) extends Observable{
       board = board.replaceCell(newPinPos, Cell(pin.index))
     }
     // board
+    notifyObservers()
+  }
+
+  def undo(): Unit = {
+    undoManager.undoStep()
+    notifyObservers()
+  }
+
+  def redo(): Unit = {
+    undoManager.redoStep()
     notifyObservers()
   }
 }

@@ -1,6 +1,6 @@
 // Spieler erstellen (Name, team, defaultpos-, haswon)
 
-// Feld erstellen (was im feld ist)
+//TODO: init game in TUI
 
 // Variable zum bestimmen wer dran ist setzen
 // bestimmen wer dran ist (mit modulo rechnung)
@@ -12,9 +12,5 @@
     // Figur verschieben, ggf. werfen
 // variable zum bestimmen wer dran ist incremeten
 
-//SOLVED Issue: spieler 1 startet auf Feld 1 anstatt Feld 0
-//SOLVED Issue: hasWon Spielerausgabe tritt erst auf nachdem der Gegner noch seinen Zug eingeben hat
-
-
-//TODO: implement board
-//TODO: implement controller
+//TODO Issue: spieler 1 startet auf Feld 1 anstatt Feld 0 (3 Wurf implementierung)
+//TODO: hasWon
