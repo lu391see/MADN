@@ -10,7 +10,7 @@ object Madn {
     val players:Array[Player] = new Array[Player](playerarraysize.toInt)
     var string1: String = "Hello, "
     for (i <- 0 until  playerarraysize.toInt) {
-      players(player_counter - 1) = new Player(scala.io.StdIn.readLine("Type your Name: "), player_counter)
+      players(player_counter - 1) = Player(scala.io.StdIn.readLine("Type your Name: "), player_counter)
       string1 += players(player_counter-1).name
       string1 += ", "
       player_counter += 1
@@ -24,7 +24,7 @@ object Madn {
     board.CreateHouses(players.length, board)
     */
     val tui = new Tui(controller, players)
-    controller.notifyObservers
+    controller.notifyObservers()
 
     //println(s.stripMargin)
     //println(string1)
@@ -39,7 +39,7 @@ object Madn {
       val dice = Dice()
       println(players(turn_counter).name + " can walk " + dice.t1 + " please choose a pin to walk with (1-4)!")
       input = scala.io.StdIn.readLine()
-      tui.processInputLine(input, players(turn_counter), dice)
+      tui.processInputLine(input, players(turn_counter), dice.t1)
       /*
       if(players(turn_counter).hasWon) {
         println(players(turn_counter).name + " has won")

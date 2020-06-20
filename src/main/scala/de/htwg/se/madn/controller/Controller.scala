@@ -8,10 +8,10 @@ class Controller(var board: Field[Cell]) extends Observable {
 
   private val undoManager = new UndoManager
 
-  def move(player: Player, input: String, dice: Dice, playerlist: Array[Player]): Unit = {
+  def move(player: Player, input: String, distance: Int, playerlist: Array[Player]): Unit = {
 
     val pin = player.pins(input.toInt -1)
-    val newPinPos = pin.position + dice.t1
+    val newPinPos = pin.position + distance
 
     if(newPinPos >= 40) {
       if (board.cell(newPinPos - 40).isSet) {
@@ -26,7 +26,7 @@ class Controller(var board: Field[Cell]) extends Observable {
       }
       board = board.replaceCell(pin.position, Cell(0))
       board = board.replaceCell(newPinPos - 40, Cell(pin.index))
-      pin.addPosition(dice.t1)
+      pin.addPosition(distance)
 
     } else {
       if (board.cell(newPinPos).isSet) {
@@ -40,7 +40,7 @@ class Controller(var board: Field[Cell]) extends Observable {
           return
       }
       board = board.replaceCell(pin.position, Cell(0))
-      pin.addPosition(dice.t1)
+      pin.addPosition(distance)
       board = board.replaceCell(newPinPos, Cell(pin.index))
     }
     // board
