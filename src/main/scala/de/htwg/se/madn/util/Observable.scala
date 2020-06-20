@@ -1,7 +1,7 @@
-package util
+package de.htwg.se.madn.util
 
 trait Observer {
-  def update: Unit
+  def update: Boolean
 }
 
 class Observable {
@@ -11,5 +11,5 @@ class Observable {
 
   def remove(s: Observer): Unit = subscribers = subscribers.filterNot(o => o == s)
 
-  def notifyObservers: Unit = subscribers.foreach(o => o.update)
+  def notifyObservers(): Unit = subscribers.foreach(o => o.update)
 }

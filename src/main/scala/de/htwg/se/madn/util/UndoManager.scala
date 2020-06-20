@@ -1,4 +1,4 @@
-package util
+package de.htwg.se.madn.util
 
 class UndoManager {
   private var undoStack: List[Command] = Nil

@@ -1,4 +1,4 @@
-package util
+package de.htwg.se.madn.util
 
 trait Command {
 
