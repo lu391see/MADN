@@ -1,7 +1,7 @@
 package de.htwg.se.madn.model
 import scala.collection.mutable.ListBuffer
 
-case class Board(board: List[Field[Cell]]) {
+case class Board(board: Field[Cell]) {
   def createPlayers(): List[Player] = {
     val playerListSize = scala.io.StdIn.readLine("Wieviele Spieler spielen?")
     var player_counter: Int = 1

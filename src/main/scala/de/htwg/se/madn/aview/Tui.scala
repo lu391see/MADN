@@ -2,7 +2,7 @@ package de.htwg.se.madn.aview
 
 import de.htwg.se.madn.controller.Controller
 import de.htwg.se.madn.model.{Cell, Dice, Field, Player}
-import de.htwg.se.madn.util.Observer
+import util.Observer
 
 class Tui(controller: Controller, players : Array[Player]) extends Observer {
   override def update: Unit = println(controller.board.toString)

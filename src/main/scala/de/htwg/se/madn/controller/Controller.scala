@@ -1,7 +1,7 @@
 package de.htwg.se.madn.controller
 
 import de.htwg.se.madn.model.{Cell, Dice, Field, Pin, Player}
-import de.htwg.se.madn.util.Observable
+import util.Observable
 // TODO: BUGFIXING (WERFEN)
 
 class Controller(var board: Field[Cell]) extends Observable{

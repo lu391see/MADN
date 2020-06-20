@@ -1,4 +1,4 @@
-package de.htwg.se.madn.util
+package util
 
 trait Observer {
   def update: Unit
