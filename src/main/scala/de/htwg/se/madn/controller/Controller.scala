@@ -40,7 +40,7 @@ class Controller(var board: Field[Cell]) extends Observable{
       pin.addPosition(dice.t1)
       board = board.replaceCell(newPinPos, Cell(pin.index))
     }
-    board
-    notifyObservers
+    // board
+    notifyObservers()
   }
 }

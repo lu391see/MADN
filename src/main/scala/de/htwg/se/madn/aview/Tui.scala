@@ -2,10 +2,9 @@ package de.htwg.se.madn.aview
 
 import de.htwg.se.madn.controller.Controller
 import de.htwg.se.madn.model.{Cell, Dice, Field, Player}
-import util.Observer
+import de.htwg.se.madn.util.Observer
 
 class Tui(controller: Controller, players : Array[Player]) extends Observer {
-  override def update: Unit = println(controller.board.toString)
   controller.add(this)
   var s = ""
   def processInputLine(input: String, player: Player, dice: Dice): Unit = {
@@ -17,5 +16,10 @@ class Tui(controller: Controller, players : Array[Player]) extends Observer {
         val new_input = scala.io.StdIn.readLine(s + "\n")
         processInputLine(new_input, player, dice)*/
     }
+  }
+
+  override def update: Boolean = {
+    println(controller.board.toString)
+    true
   }
 }
